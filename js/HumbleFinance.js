@@ -715,7 +715,7 @@ var HumbleFinance = {
                 bars: {show: true, stacked: true, 'barWidth': .5, 'fill': true, 'lineWidth': 2, 'fillOpacity': 1},
                 xaxis: xAxis,
                 yaxis: yAxis,
-                legend: {show: false},
+                legend: {show: true, container : $('legend')},
                 grid: {verticalLines: false, horizontalLines: false, outlineWidth: 0, labelMargin: 0},
                 mouse: {track: true, trackY: false, position: 'ne', trackDecimals: 0},
                 shadowSize: false,
