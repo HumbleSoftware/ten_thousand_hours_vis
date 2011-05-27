@@ -64,14 +64,14 @@ echo "\n";
 
 /*
 Personal Practice,
-Onensamble Practice,
+On Ensemble Practice,
 Group Time Practice,
 Live / Performance Practice
 */         
 
 echo 'var practices = [';
 echo '{"label":"Personal Practice","data":'.json_encode($practices[0]).'},';
-echo '{"label":"Onensamble Practice","data":'.json_encode($practices[1]).'},';
+echo '{"label":"On Ensemble Practice","data":'.json_encode($practices[1]).'},';
 echo '{"label":"Group Practice","data":'.json_encode($practices[2]).'},';
 echo '{"label":"Live Performance","data":'.json_encode($practices[3]).'}';
 echo '];';
