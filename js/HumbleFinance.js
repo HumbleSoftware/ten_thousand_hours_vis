@@ -163,9 +163,9 @@ var HumbleFinance = {
         this.clearContainer();
 
         // Build DOM element
-        this.containers.price = new Element('div', {id: 'priceGraph', style: 'width: 100%; height: 240px;'});
+        this.containers.price = new Element('div', {id: 'priceGraph', style: 'width: 100%; height: 80px;'});
         this.containers.volume = new Element('div', {id: 'volumeGraph', style: 'width: 100%; height: 80px;'});
-        this.containers.summary = new Element('div', {id: 'summaryGraph', style: 'width: 100%; height: 60px;'});
+        this.containers.summary = new Element('div', {id: 'summaryGraph', style: 'width: 100%; height: 240px;'});
         this.containers.flags = new Element('div', {id: 'flagContainer'/*, style: 'width: 0px; height: 0px;'*/});
         this.handles.left = new Element('div', {id: 'leftHandle', 'class': 'handle zoomHandle', style: 'display: none;'});
         this.handles.right = new Element('div', {id: 'rightHandle', 'class': 'handle zoomHandle', style: 'display: none;'});
@@ -176,9 +176,9 @@ var HumbleFinance = {
         this.handles.scroll.onselectstart = function () { return false; };
 
         // Insert into container
-        container.insert(this.containers.price);
-        container.insert(this.containers.volume);
         container.insert(this.containers.summary);
+        container.insert(this.containers.volume);
+        container.insert(this.containers.price);
         container.insert(this.containers.flags);
         container.insert(this.handles.left);
         container.insert(this.handles.right);
@@ -291,7 +291,7 @@ var HumbleFinance = {
         xPosLeft = Math.floor(graphOffset[0] + plotOffset.left + xaxis.d2p(x1) + (xaxis.d2p(x2) - xaxis.d2p(x1) - width)/2);
         yPos     = Math.ceil(graphOffset[1] + graphHeight - 2);
 
-        this.handles.scroll.setStyle({position: 'absolute', left: xPosLeft+'px', top: yPos+'px', width: width+'px'});
+        this.handles.scroll.setStyle({position: 'absolute', left: xPosLeft+'px', width: width+'px'});
         this.handles.scroll.show();
     },
 
@@ -666,7 +666,7 @@ var HumbleFinance = {
                 lines: {show: true, fill: true, fillOpacity: .1, lineWidth: 1},
                 xaxis: xAxis,
                 yaxis: yAxis,
-                grid: {outlineWidth: 0, labelMargin: 0},
+                grid: {verticalLines: false, outlineWidth: 0, labelMargin: 0},
                 mouse: {track: true, trackY: false, sensibility: 1, trackDecimals: 4, trackFormatter: this.trackFormatter, position: 'ne'},
                 shadowSize: false,
                 HtmlText: true

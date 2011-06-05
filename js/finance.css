@@ -16,6 +16,7 @@
 .scrollHandle {
     width: 100px;
     height: 12px;
+    top: -8px;
 }
 .flag {
     border: 1px solid #4499FF;
@@ -33,6 +34,7 @@
 .flotr-mouse-value {
     font-family : sans-serif;
 	font-size: 12px;
+    margin-top: -320px;
 }
 #summaryGraph .flotr-grid-label {
     margin-top: -16px;
