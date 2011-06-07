@@ -16,7 +16,7 @@
 .scrollHandle {
     width: 100px;
     height: 12px;
-    top: -8px;
+    top: -14px;
 }
 .flag {
     border: 1px solid #4499FF;
@@ -37,6 +37,8 @@
 	font-size: 12px;
     margin-top: -338px;
     white-space: normal !important;
+    right: auto !important;
+    left: 8px !important;
     max-width: 280px;
     text-align: left;
 }
@@ -47,6 +49,29 @@
     margin-top: -16px;
     background: transparent;
     text-align: left;
+}
+#summaryGraph .flotr-grid-label-y {
+    font-size: 12px;
+    margin-top: 2px;
+    right: 4px !important;
+    width: 80px !important;
+    left: auto !important;
+}
+#summaryGraph .flotr-grid-label-value {
+    width: 80px;
+    height: 16px;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+}
+#summaryGraph .flotr-grid-label-background {
+    width: 80px;
+    background: #fff;
+    height: 16px;
+    opacity: .75;
+    position: absolute;
+    top: 0px;
+    z-index: 1;
 }
 #priceGraph {
     margin-top: 10px;
