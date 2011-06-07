@@ -759,7 +759,7 @@ var HumbleFinance = {
             autoscaleMargin: .5,
             margin: false,
             tickDecimals: 1,
-            ticks: [[10000,'10000 Hours']]
+            ticks: [[10000,'<div class="flotr-grid-label-value">10000 Hours</div><div class="flotr-grid-label-background"></div>']]
         };
 
         p = Flotr.draw(
