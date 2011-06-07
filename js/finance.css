@@ -22,6 +22,7 @@
     border: 1px solid #4499FF;
     background: white;
     padding: 1px 2px 1px 2px;
+    font-size: 12px;
 }
 .flagpole {
     border-left: 1px solid #4499FF;
@@ -34,17 +35,25 @@
 .flotr-mouse-value {
     font-family : sans-serif;
 	font-size: 12px;
-    margin-top: -320px;
+    margin-top: -338px;
     white-space: normal !important;
     max-width: 280px;
     text-align: left;
+}
+#summaryGraph {
+    border-bottom: 1px solid #CCE6FF;
 }
 #summaryGraph .flotr-grid-label {
     margin-top: -16px;
     background: transparent;
     text-align: left;
 }
-
+#priceGraph {
+    margin-top: 10px;
+}
+#volumeGraph {
+    margin-top: 8px;
+}
 #body-container {
     text-align: center;
 }
