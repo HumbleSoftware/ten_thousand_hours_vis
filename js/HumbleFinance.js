@@ -591,8 +591,10 @@ var HumbleFinance = {
      */
     drawFlags: function () {
 
-        var xAxis = this.graphs.price.axes.x,
-            yAxis = this.graphs.price.axes.y,
+        var graph = this.graphs.summary,
+            div   = this.containers.price,
+            xAxis = graph.axes.x,
+            yAxis = graph.axes.y,
             min   = xAxis.datamin,
             max   = xAxis.datamax;
 
@@ -611,9 +613,9 @@ var HumbleFinance = {
                     flagContent = this.flagData[i][1],
                     xPos        = xAxis.d2p(point[0]),
                     yPos        = yAxis.d2p(point[1]),
-                    offset      = this.containers.price.cumulativeOffset(),
-                    left        = Math.floor(xPos + this.graphs.price.plotOffset.left),
-                    top         = Math.floor(yPos - 40 + this.graphs.price.plotOffset.top);
+                    offset      = div.cumulativeOffset(),
+                    left        = Math.floor(xPos + graph.plotOffset.left),
+                    top         = Math.floor(yPos - 40 + graph.plotOffset.top);
 
                 flag = new Element('div', {'class': 'flag', 'style': 'position: absolute; top: '+top+'px; left: '+left+'px; z-index: 10;'});
                 flag.update(flagContent);
@@ -743,8 +745,8 @@ var HumbleFinance = {
             p, xAxis, yAxis;
 
         xAxis = {
-            min: xmin, 
-            max: xmax, 
+            min: 0, 
+            max: 10989,
             noTicks: noticks,
             margin: false,
             tickFormatter: this.xTickFormatter, 
@@ -753,7 +755,7 @@ var HumbleFinance = {
 
         yAxis = {
             min: ymin, 
-            max: ymax, 
+            max: 10000, 
             autoscaleMargin: .5,
             showLabels: false, 
             margin: false,
@@ -762,8 +764,13 @@ var HumbleFinance = {
 
         p = Flotr.draw(
             $$('#' + this.id + ' #summaryGraph')[0],
-            [data],
+            [
+                data,
+                {data : [[0,0],[4878,10000]], lines : {fill : false}},
+                {data : [[0,0],[10989,10000]], lines : {fill : false}}
+            ],
             {
+                colors: ['#00A8F0', '#0675ed', '#0675ed'],
                 lines: {show: true, fill: true, fillOpacity: .1, lineWidth: 1},
                 xaxis: xAxis,
                 yaxis: yAxis,
