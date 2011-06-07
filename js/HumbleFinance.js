@@ -757,9 +757,9 @@ var HumbleFinance = {
             min: ymin, 
             max: 10000, 
             autoscaleMargin: .5,
-            showLabels: false, 
             margin: false,
-            tickDecimals: 1
+            tickDecimals: 1,
+            ticks: [[10000,'10000 Hours']]
         };
 
         p = Flotr.draw(
