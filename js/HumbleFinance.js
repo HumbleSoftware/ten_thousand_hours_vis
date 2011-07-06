@@ -140,7 +140,8 @@ var HumbleFinance = {
             y2: this.bounds.ymax
         };
         this.graphs.summary = this.summaryGraph(this.summaryData, this.bounds);
-        this.graphs.summary.setSelection(area);
+        this.graphs.price = this.priceGraph(this.priceData, this.bounds);
+        this.graphs.price.setSelection(area);
     },
 
     clearContainer: function() {
@@ -200,17 +201,17 @@ var HumbleFinance = {
         Event.observe(this.containers.price, 'flotr:clearhit', this.clearHit.bind(this));
 
         // Handle observers
-        Event.observe(this.containers.summary, 'flotr:select', this.positionScrollHandle.bind(this));
-        Event.observe(this.containers.summary, 'flotr:select', this.positionZoomHandles.bind(this));
+        Event.observe(this.containers.price, 'flotr:select', this.positionScrollHandle.bind(this));
+        Event.observe(this.containers.price, 'flotr:select', this.positionZoomHandles.bind(this));
         Event.observe(this.handles.left, 'mousedown', this.zoomObserver.bind(this));
         Event.observe(this.handles.right, 'mousedown', this.zoomObserver.bind(this));
         Event.observe(this.handles.scroll, 'mousedown', this.scrollObserver.bind(this));
 
         // On manual selection, hide zoom and scroll handles
-        Event.observe(this.containers.summary, 'mousedown', this.hideSelection.bind(this));
+        Event.observe(this.containers.price, 'mousedown', this.hideSelection.bind(this));
 
         // Attach summary selection event to redraw price and volume charts
-        Event.observe(this.containers.summary, 'flotr:select', this.selectObserver.bind(this));
+        Event.observe(this.containers.price, 'flotr:select', this.selectObserver.bind(this));
     },
 
     /**
@@ -224,8 +225,6 @@ var HumbleFinance = {
             xmin = Math.floor(area.x1),
             xmax = Math.ceil(area.x2),
             newBounds = {'xmin': xmin, 'xmax': xmax, 'ymin': null, 'ymax': null};
-
-        this.graphs.price = this.priceGraph(this.priceData.slice(xmin, xmax+1), newBounds);
 
         var volumeData = [];
         for (var i = 0; i < this.volumeData.length; i++) {
@@ -278,8 +277,8 @@ var HumbleFinance = {
             x2          = e.memo[0].x2,
             xaxis       = e.memo[1].axes.x,
             plotOffset  = e.memo[1].plotOffset,
-            graphOffset = this.containers.summary.positionedOffset(),
-            graphHeight = this.containers.summary.getHeight(),
+            graphOffset = this.containers.price.positionedOffset(),
+            graphHeight = this.containers.price.getHeight(),
             height      = this.handles.scroll.getHeight(),
             width, xPosLeft, yPos;
 
@@ -304,7 +303,7 @@ var HumbleFinance = {
 
         var x             = e.clientX,
             offset        = this.handles.scroll.cumulativeOffset(),
-            prevSelection = this.graphs.summary.prevSelection;
+            prevSelection = this.graphs.price.prevSelection;
 
         /**
          * Perform scroll on handle move, observer
@@ -316,7 +315,7 @@ var HumbleFinance = {
             Event.stopObserving(document, 'mousemove', handleObserver);
 
             var deltaX = e.clientX - x,
-                xAxis  = this.graphs.summary.axes.x,
+                xAxis  = this.graphs.price.axes.x,
                 x1     = xAxis.p2d(Math.min(prevSelection.first.x, prevSelection.second.x) + deltaX),
                 x2     = xAxis.p2d(Math.max(prevSelection.first.x, prevSelection.second.x) + deltaX),
                 area;
@@ -341,7 +340,7 @@ var HumbleFinance = {
 
             // If selection varies from previous, set new selection
             if (area.x1 != prevSelection.first.x) {
-                this.graphs.summary.setSelection(area);
+                this.graphs.price.setSelection(area);
             }
 
             Event.observe(document, 'mousemove', handleObserver);
@@ -372,7 +371,7 @@ var HumbleFinance = {
         var zoomHandle    = e.element(),
             x             = e.clientX,
             offset        = zoomHandle.cumulativeOffset(),
-            prevSelection = this.graphs.summary.prevSelection;
+            prevSelection = this.graphs.price.prevSelection;
 
         /**
          * Perform zoom on handle move, observer
@@ -384,7 +383,7 @@ var HumbleFinance = {
             Event.stopObserving(document, 'mousemove', handleObserver);
 
             var deltaX = e.clientX - x,
-                xAxis  = this.graphs.summary.axes.x,
+                xAxis  = this.graphs.price.axes.x,
                 x1,
                 x2;
 
@@ -421,7 +420,7 @@ var HumbleFinance = {
 
             // If selection varies from previous, set new selection
             if (area.x1 != prevSelection.first.x || area.x2 != prevSelection.second.x) {
-                this.graphs.summary.setSelection(area);
+                this.graphs.price.setSelection(area);
             }
 
             Event.observe(document, 'mousemove', handleObserver);
@@ -452,8 +451,8 @@ var HumbleFinance = {
      */
     zoom: function (x) {
 
-        var prevSelection = this.graphs.summary.prevSelection,
-            xAxis = this.graphs.summary.axes.x,
+        var prevSelection = this.graphs.price.prevSelection,
+            xAxis = this.graphs.price.axes.x,
             x1, x2, y1, y2, area;
 
         // Check for previous selection
@@ -476,7 +475,7 @@ var HumbleFinance = {
             y2: y2
         };
 
-        this.graphs.summary.setSelection(area);
+        this.graphs.price.setSelection(area);
     },
 
     /**
@@ -490,8 +489,8 @@ var HumbleFinance = {
             x2         = e.memo[0].x2,
             xaxis      = e.memo[1].axes.x,
             plotOffset = e.memo[1].plotOffset,
-            height     = this.containers.summary.getHeight(),
-            offset     = this.containers.summary.positionedOffset(),
+            height     = this.containers.price.getHeight(),
+            offset     = this.containers.price.positionedOffset(),
             dimensions, xPosOne, xPosTwo, xPosLeft, xPosRight, yPos;
 
         this.handles.left.show();
@@ -670,6 +669,7 @@ var HumbleFinance = {
                 yaxis: yAxis,
                 grid: {verticalLines: false, outlineWidth: 0, labelMargin: 0},
                 mouse: {track: true, trackY: false, sensibility: 1, trackDecimals: 4, trackFormatter: this.trackFormatter, position: 'ne'},
+                selection: {mode: 'x'},
                 shadowSize: false,
                 HtmlText: true
             }
@@ -776,7 +776,6 @@ var HumbleFinance = {
                 yaxis: yAxis,
                 grid: {verticalLines: false, horizontalLines: false,
                        labelMargin: 0, outlineWidth: 0},
-                selection: {mode: 'x'},
                 shadowSize: false,
                 HtmlText: true
             }

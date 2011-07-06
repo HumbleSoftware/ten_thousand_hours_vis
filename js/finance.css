@@ -16,7 +16,7 @@
 .scrollHandle {
     width: 100px;
     height: 12px;
-    top: -14px;
+    margin-top: -7px;
 }
 .flag {
     border: 1px solid #4499FF;
