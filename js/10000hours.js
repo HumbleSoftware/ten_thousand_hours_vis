@@ -37,7 +37,7 @@ Event.observe(document, 'dom:loaded', function() {
 
     var message, flagData;
 
-    message = '<div>'+Math.round(totals[totals.length-1][1])+' Total Hours, ';
+    message = '<div>'+(startTime + Math.round(totals[totals.length-1][1]))+' Total Hours, ';
     message += dates[totals.length-1]+'</div>';
     flagData = [[totals.length-1, message]];
 
