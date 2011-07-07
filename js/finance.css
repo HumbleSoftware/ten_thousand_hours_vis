@@ -59,10 +59,12 @@
 }
 #summaryGraph .flotr-grid-label-y .start,
 #summaryGraph .flotr-grid-label-y .end {
-    padding: 0px 0px 0px 3px;
     background: #fff;
     opacity: .8;
     position: absolute;
+}
+.flag, .flagpole {
+    margin-left: 40px;
 }
 #summaryGraph .flotr-grid-label-y .end {
     top : 8px;
@@ -87,6 +89,15 @@
 }
 #priceGraph {
     margin-top: 10px;
+}
+#summaryGraph,
+#priceGraph {
+    margin-left: 40px;
+    width: 560px !important;
+}
+#summaryGraph .flotr-grid-label-y,
+#priceGraph .flotr-grid-label-y {
+    margin: -4px 0px 0px -36px;
 }
 #volumeGraph {
     margin-top: 8px;
