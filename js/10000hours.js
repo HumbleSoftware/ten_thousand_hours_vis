@@ -1,6 +1,8 @@
 
 Event.observe(document, 'dom:loaded', function() {
 
+    var startTime = 4218;
+
     HumbleFinance.trackFormatter = function (obj) {
         
         var x = Math.floor(obj.x),
@@ -21,11 +23,7 @@ Event.observe(document, 'dom:loaded', function() {
     };
     
     HumbleFinance.yTickFormatter = function (n) {
-        
-        if (n == this.max) {
-            return false;
-        }
-        
+        n = parseFloat(n) + startTime;
         return n+'h';
     };
     
