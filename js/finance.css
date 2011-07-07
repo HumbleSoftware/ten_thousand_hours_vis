@@ -101,6 +101,7 @@
 }
 #volumeGraph {
     margin-top: 8px;
+    border-bottom: 1px solid #CCE6FF;
 }
 #body-container {
     text-align: center;
