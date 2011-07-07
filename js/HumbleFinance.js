@@ -114,9 +114,10 @@ var HumbleFinance = {
      * @param Array volumeData
      * @param Array summaryData
      */
-    init: function(id, priceData, volumeData, summaryData) {
+    init: function(id, priceData, volumeData, summaryData, o) {
 
         // Set members
+        this.o = o;
         this.id = id;
         this.priceData = priceData;
         this.volumeData = volumeData;
@@ -758,8 +759,8 @@ var HumbleFinance = {
             max: 10000, 
             autoscaleMargin: .5,
             margin: false,
-            tickDecimals: 1,
-            ticks: [[10000,'<div class="flotr-grid-label-value">10000 Hours</div><div class="flotr-grid-label-background"></div>']]
+            tickDecimals: 0,
+            ticks: [[0, '<div class="start">'+this.o.startTime+'h</div>'],[10000, '<div class="end">10000h</div>']]
         };
 
         p = Flotr.draw(

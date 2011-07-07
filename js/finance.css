@@ -43,6 +43,7 @@
 }
 #summaryGraph {
     border-bottom: 1px solid #CCE6FF;
+    position: relative;
 }
 #summaryGraph .flotr-grid-label {
     margin: -16px 0px 0px -12px;
@@ -51,9 +52,23 @@
 }
 #summaryGraph .flotr-grid-label-y {
     font-size: 12px;
-    margin: 2px 0px 0px 3px;
+    margin: 0px;
+    bottom: 0px;
     text-align: left !important;
+    width: auto !important;
 }
+#summaryGraph .flotr-grid-label-y .start,
+#summaryGraph .flotr-grid-label-y .end {
+    padding: 0px 0px 0px 3px;
+    background: #fff;
+    opacity: .8;
+    position: absolute;
+}
+#summaryGraph .flotr-grid-label-y .end {
+    top : 8px;
+    left: 0px;
+}
+
 #summaryGraph .flotr-grid-label-value {
     width: 80px;
     height: 16px;

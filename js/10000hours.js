@@ -33,7 +33,7 @@ Event.observe(document, 'dom:loaded', function() {
         return tickDate.getMonth()+'/'+tickDate.getDate()+'/'+tickDate.getFullYear();
     };
     
-    HumbleFinance.init('humblefinance', totals, practices, totals);
+    HumbleFinance.init('humblefinance', totals, practices, totals, {startTime : startTime});
 
     var message, flagData;
 
