@@ -29,7 +29,7 @@ Event.observe(document, 'dom:loaded', function() {
     
     HumbleFinance.xTickFormatter = function (n) { 
         if (n == 0) return '';
-        var tickDate = (new Date(Date.parse(dates[0]) + n * 1000 * 60 * 60 * 24));
+        var tickDate = (new Date(Date.parse(dates[1]) + n * 1000 * 60 * 60 * 24));
         return tickDate.getMonth()+'/'+tickDate.getDate()+'/'+tickDate.getFullYear();
     };
     
