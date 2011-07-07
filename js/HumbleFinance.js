@@ -655,7 +655,7 @@ var HumbleFinance = {
             max             : ymax, 
             margin          : false,
             tickFormatter   : this.yTickFormatter, 
-            noTicks         : 3, 
+            noTicks         : 4, 
             autoscaleMargin : .5, 
             tickDecimals    : 0
         };
