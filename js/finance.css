@@ -45,13 +45,13 @@
     border-bottom: 1px solid #CCE6FF;
 }
 #summaryGraph .flotr-grid-label {
-    margin-top: -16px;
+    margin: -16px 0px 0px -12px;
     background: transparent;
     text-align: left;
 }
 #summaryGraph .flotr-grid-label-y {
     font-size: 12px;
-    margin-top: 2px;
+    margin: 2px 0px 0px 3px;
     text-align: left !important;
 }
 #summaryGraph .flotr-grid-label-value {
