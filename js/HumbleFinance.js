@@ -771,7 +771,7 @@ var HumbleFinance = {
                 {data : [[0,0],[10989,10000]], lines : {fill : false}}
             ],
             {
-                colors: ['#00A8F0', '#0675ed', '#0675ed'],
+                colors: ['#00A8F0', '#cccccc', '#cccccc'],
                 lines: {show: true, fill: true, fillOpacity: .1, lineWidth: 1},
                 xaxis: xAxis,
                 yaxis: yAxis,
