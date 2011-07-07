@@ -51,7 +51,6 @@
     text-align: left;
 }
 #summaryGraph .flotr-grid-label-y {
-    font-size: 12px;
     margin: 0px;
     bottom: 0px;
     text-align: left !important;
@@ -59,6 +58,8 @@
 }
 #summaryGraph .flotr-grid-label-y .start,
 #summaryGraph .flotr-grid-label-y .end {
+    margin-left: -4px;
+    padding-left: 4px;
     background: #fff;
     opacity: .8;
     position: absolute;
@@ -66,8 +67,13 @@
 .flag, .flagpole {
     margin-left: 40px;
 }
+#summaryGraph .flotr-grid-label-y .start {
+    bottom: -1px;
+    border-bottom: 1px solid #CCE6FF;
+    padding-right: 5px;
+}
 #summaryGraph .flotr-grid-label-y .end {
-    top : 8px;
+    top : 14px;
     left: 0px;
 }
 
