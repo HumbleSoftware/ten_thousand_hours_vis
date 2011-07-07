@@ -37,8 +37,7 @@
 	font-size: 12px;
     margin-top: -338px;
     white-space: normal !important;
-    right: auto !important;
-    left: 8px !important;
+    right: 8px !important;
     max-width: 280px;
     text-align: left;
 }
@@ -53,9 +52,7 @@
 #summaryGraph .flotr-grid-label-y {
     font-size: 12px;
     margin-top: 2px;
-    right: 4px !important;
-    width: 80px !important;
-    left: auto !important;
+    text-align: left !important;
 }
 #summaryGraph .flotr-grid-label-value {
     width: 80px;
