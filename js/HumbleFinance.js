@@ -30,6 +30,8 @@
  * @author Carl Sutherland
  * @version 1.1.0
  */
+(function () {
+var D = Flotr.DOM;
 var HumbleFinance = {
 
     /**
@@ -784,4 +786,6 @@ var HumbleFinance = {
 
         return p;
     }
-}
+};
+
+})();
