@@ -109,6 +109,9 @@
     margin-top: 8px;
     border-bottom: 1px solid #CCE6FF;
 }
+#volumeGraph .flotr-mouse-value {
+    display: none;
+}
 #body-container {
     text-align: center;
 }
