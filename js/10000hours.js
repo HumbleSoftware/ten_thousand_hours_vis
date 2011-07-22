@@ -1,5 +1,4 @@
-
-Event.observe(document, 'dom:loaded', function() {
+(function () {
 
     var startTime = 4218;
 
@@ -42,4 +41,4 @@ Event.observe(document, 'dom:loaded', function() {
     flagData = [[totals.length-1, message]];
 
     HumbleFinance.setFlags(flagData);
-});
+})();
