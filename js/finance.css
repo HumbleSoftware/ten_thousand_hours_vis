@@ -53,6 +53,10 @@
     border-bottom: 1px solid #CCE6FF;
     position: relative;
 }
+#summaryGraph .flotr-grid-label:not(.flotr-grid-label-y) {
+    top: 18px !important;
+    opacity: .8;
+}
 #summaryGraph .flotr-grid-label {
     margin: -16px 0px 0px -12px;
     background: transparent;
