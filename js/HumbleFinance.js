@@ -766,11 +766,22 @@ window.HumbleFinance = {
             ymin = bounds.ymin,
             ymax = bounds.ymax,
             noticks = xmax > 5 ? 5 : xmax,
-            p, xAxis, yAxis;
+            start = this.o.startTime,
+            p, xAxis, yAxis, ticks;
+
+        ymax = 10000 - start;
+        xmax = 10000 - start;
+
+        ticks = [
+            [0, '<div class="start">'+start+'h</div>'],
+            [ymax - 4000, '<div class="end">6000h</div>'],
+            [ymax - 2000, '<div class="end">8000h</div>'],
+            [ymax, '<div class="end">10000h</div>']
+        ];
 
         xAxis = {
             min: 0, 
-            max: 10989,
+            max: xmax,
             noTicks: noticks,
             margin: false,
             tickFormatter: this.xTickFormatter, 
@@ -779,11 +790,11 @@ window.HumbleFinance = {
 
         yAxis = {
             min: ymin, 
-            max: 10000, 
+            max: ymax,
             autoscaleMargin: .5,
             margin: false,
             tickDecimals: 0,
-            ticks: [[0, '<div class="start">'+this.o.startTime+'h</div>'],[10000, '<div class="end">10000h</div>']]
+            ticks: ticks
         };
 
         p = Flotr.draw(
