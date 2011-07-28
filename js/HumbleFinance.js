@@ -679,7 +679,6 @@ window.HumbleFinance = {
         };
 
         p = Flotr.draw(
-            //$$('#' + this.id + ' #priceGraph')[0],
             this.containers.price,
             [data],
             {
@@ -734,7 +733,6 @@ window.HumbleFinance = {
         legend.innerHTML = '';
 
         v = Flotr.draw(
-            //$$('#' + this.id + ' #volumeGraph')[0],
             this.containers.volume,
             data,
             {
@@ -798,7 +796,6 @@ window.HumbleFinance = {
         };
 
         p = Flotr.draw(
-            //$$('#' + this.id + ' #summaryGraph')[0],
             this.containers.summary,
             [
                 data
