@@ -801,9 +801,7 @@ window.HumbleFinance = {
             //$$('#' + this.id + ' #summaryGraph')[0],
             this.containers.summary,
             [
-                data,
-                {data : [[0,0],[4878,10000]], lines : {fill : false}},
-                {data : [[0,0],[10989,10000]], lines : {fill : false}}
+                data
             ],
             {
                 colors: ['#00A8F0', '#cccccc', '#cccccc'],
