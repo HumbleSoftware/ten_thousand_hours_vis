@@ -21,11 +21,19 @@
 .flag {
     border: 1px solid #4499FF;
     background: white;
-    padding: 1px 2px 1px 2px;
-    font-size: 12px;
+    padding: 3px 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
 }
 .flagpole {
     border-left: 1px solid #4499FF;
+}
+.flotr-title {
+    margin-top: -24px;
+    color: #333;
+    font-weight: normal !important;
+    font-size: 15px;
 }
 .flotr-grid-label {
     font-size: 11px;
@@ -94,7 +102,7 @@
     z-index: 1;
 }
 #priceGraph {
-    margin-top: 10px;
+    margin-top: 30px;
 }
 #summaryGraph,
 #priceGraph {
@@ -105,8 +113,11 @@
 #priceGraph .flotr-grid-label-y {
     margin: -4px 0px 0px -36px;
 }
+#priceGraph .flotr-title {
+    margin-left: -20px;
+}
 #volumeGraph {
-    margin-top: 8px;
+    margin-top: 30px;
     border-bottom: 1px solid #CCE6FF;
 }
 #volumeGraph .flotr-mouse-value {

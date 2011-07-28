@@ -682,6 +682,7 @@ window.HumbleFinance = {
             this.containers.price,
             [data],
             {
+                title: 'Daily Hours By Practice Type',
                 lines: {show: true, fill: true, fillOpacity: .1, lineWidth: 1},
                 xaxis: xAxis,
                 yaxis: yAxis,
@@ -736,6 +737,7 @@ window.HumbleFinance = {
             this.containers.volume,
             data,
             {
+                title: 'Cumulative Hours',
                 bars: {show: true, stacked: true, 'barWidth': .5, 'fill': true, 'lineWidth': 2, 'fillOpacity': 1},
                 xaxis: xAxis,
                 yaxis: yAxis,
