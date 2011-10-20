@@ -49,16 +49,24 @@
 .scrollHandle {
     width: 100px;
     height: 12px;
-    top: -14px;
+    margin-top: -7px;
 }
 .flag {
     border: 1px solid #4499FF;
     background: white;
-    padding: 1px 2px 1px 2px;
-    font-size: 12px;
+    padding: 3px 4px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
 }
 .flagpole {
     border-left: 1px solid #4499FF;
+}
+.flotr-title {
+    margin-top: -24px;
+    color: #333;
+    font-weight: normal !important;
+    font-size: 15px;
 }
 .flotr-grid-label {
     font-size: 11px;
@@ -68,28 +76,52 @@
 .flotr-mouse-value {
     font-family : sans-serif;
 	font-size: 12px;
-    margin-top: -338px;
+    margin-top: -364px;
     white-space: normal !important;
-    right: auto !important;
-    left: 8px !important;
+    right: 8px !important;
     max-width: 280px;
     text-align: left;
 }
 #summaryGraph {
     border-bottom: 1px solid #CCE6FF;
+    position: relative;
+}
+#summaryGraph .flotr-grid-label:not(.flotr-grid-label-y) {
+    top: 18px !important;
+    opacity: .8;
 }
 #summaryGraph .flotr-grid-label {
-    margin-top: -16px;
+    margin: -16px 0px 0px -12px;
     background: transparent;
     text-align: left;
 }
 #summaryGraph .flotr-grid-label-y {
-    font-size: 12px;
-    margin-top: 2px;
-    right: 4px !important;
-    width: 80px !important;
-    left: auto !important;
+    margin: 0px;
+    bottom: 0px;
+    text-align: left !important;
+    width: auto !important;
 }
+#summaryGraph .flotr-grid-label-y .start,
+#summaryGraph .flotr-grid-label-y .end {
+    margin-left: -4px;
+    padding-left: 4px;
+    background: #fff;
+    opacity: .8;
+    position: absolute;
+}
+.flag, .flagpole {
+    margin-left: 40px;
+}
+#summaryGraph .flotr-grid-label-y .start {
+    bottom: -1px;
+    border-bottom: 1px solid #CCE6FF;
+    padding-right: 5px;
+}
+#summaryGraph .flotr-grid-label-y .end {
+    top : 14px;
+    left: 0px;
+}
+
 #summaryGraph .flotr-grid-label-value {
     width: 80px;
     height: 16px;
@@ -107,10 +139,26 @@
     z-index: 1;
 }
 #priceGraph {
-    margin-top: 10px;
+    margin-top: 30px;
+}
+#summaryGraph,
+#priceGraph {
+    margin-left: 40px;
+    width: 560px !important;
+}
+#summaryGraph .flotr-grid-label-y,
+#priceGraph .flotr-grid-label-y {
+    margin: -4px 0px 0px -36px;
+}
+#priceGraph .flotr-title {
+    margin-left: -20px;
 }
 #volumeGraph {
-    margin-top: 8px;
+    margin-top: 30px;
+    border-bottom: 1px solid #CCE6FF;
+}
+#volumeGraph .flotr-mouse-value {
+    display: none;
 }
 #body-container {
     text-align: center;
