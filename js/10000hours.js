@@ -59,6 +59,7 @@
       data    : practices,
       skipPreprocess : true,
       flotr   : {
+        title : 'Daily Time by Category:',
         bars : { show : true, stacked : true },
         mouse: {
           track: true,
@@ -70,8 +71,7 @@
           position : 'ne',
           show : true,
           container : document.getElementById('legend')
-        },
-        HtmlText : true
+        }
       }
     },
 
