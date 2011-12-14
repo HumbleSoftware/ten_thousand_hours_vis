@@ -29,6 +29,9 @@
   right : -150px !important;
   text-align : left;
 }
+#vis .practice .flotr-mouse-value {
+  display: none;
+}
 
 
 /* Old Finance Styles */
