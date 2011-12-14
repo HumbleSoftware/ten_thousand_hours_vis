@@ -57,7 +57,7 @@ ten.Vis.config = {
         showLabels : true,
         tickFormatter : function (n) { 
           if (n == 0) return '';
-          var tickDate = (new Date(Date.parse(dates[1]) + n * 1000 * 60 * 60 * 24)); // Double check this index please
+          var tickDate = (new Date(Date.parse(this.dates[1]) + n * 1000 * 60 * 60 * 24)); // Double check this index please
           return tickDate.getMonth()+'/'+tickDate.getDate()+'/'+tickDate.getFullYear();
         }
       }
@@ -101,18 +101,18 @@ ten.Vis.config = {
         trackDecimals: 4,
         trackFormatter: function (o) {
           var x = Math.floor(o.x),
-              text = descriptions[x];
+              text = this.descriptions[x];
 
           if (!text) {
               var t = 0;
-              for (var i = 0; i < practices.length; i++) {
-                  t += parseFloat(practices[i].data[x][1]);
+              for (var i = 0; i < this.entries.length; i++) {
+                  t += parseFloat(this.entries[i].data[x][1]);
               }
               t = Math.round(t * 100) / 100;
               text = t + ' hours';
           }
           
-          text = dates[x] + ': ' + text;
+          text = this.dates[x] + ': ' + text;
 
           return (text);
         },
@@ -142,8 +142,6 @@ Vis.prototype = {
       selection = new H.Interaction({leader : totals});
       hit       = new H.Interaction();
 
-      console.log(config);
-
     vis.add(summary);
     vis.add(entries);
     vis.add(totals);
@@ -159,19 +157,30 @@ Vis.prototype = {
     var
       data    = this.data,
       config  = Vis.config,
-      summary = _.clone(config.summary),
-      entries = _.clone(config.entries),
-      totals  = _.clone(config.totals);
+      summary = Flotr.clone(config.summary),
+      entries = Flotr.clone(config.entries),
+      totals  = Flotr.clone(config.totals);
 
     summary.data  = data.totals;
     entries.data  = data.entries;
     totals.data   = data.totals;
 
-    return {
+    return this.bindFormattersToData({
       summary : summary,
       entries : entries,
       totals : totals
-    };
+    });
+  },
+  bindFormattersToData : function (config) {
+    config.totals.flotr.mouse.trackFormatter = _.bind(
+      config.totals.flotr.mouse.trackFormatter,
+      this.data
+    );
+    config.summary.flotr.xaxis.tickFormatter = _.bind(
+      config.summary.flotr.xaxis.tickFormatter,
+      this.data
+    );
+    return config;
   }
 };
 
