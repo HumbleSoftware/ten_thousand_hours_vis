@@ -11,21 +11,16 @@ var
 
 this[name] = ten;
 
-// Options
-
 
 // Vis declaration
 function Vis (container, data) {
   this.container = container;
   this.data = data;
+  setConfig.apply(this);
   this.draw();
 }
 ten.Vis = Vis;
 
-var
-  start = 4218,
-  ymax = 10000 - start,
-  xmax = 10000 - start;
 
 // Configuration
 ten.Vis.config = {
@@ -43,16 +38,10 @@ ten.Vis.config = {
         noTicks : 3,
         showLabels : true,
         min : 0,
-        max : ymax,
-        ticks : [
-            [0, '<div class="start">'+start+'h</div>'],
-            [ymax - 4000, '<div class="end">6000h</div>'],
-            [ymax - 2000, '<div class="end">8000h</div>'],
-            [ymax, '<div class="end">10000h</div>']
-        ]
+        max : 10000
       },
       xaxis : {
-        max : xmax,
+        max : 10000,
         min: 0,
         showLabels : true,
         tickFormatter : function (n) { 
@@ -136,7 +125,7 @@ ten.Vis.config = {
 Vis.prototype = {
   draw : function () {
     var
-      config    = this.getConfig(),
+      config    = this.config,
       vis       = new H.Visualization();
       summary   = new H.Child(config.summary);
       entries   = new H.Child(config.entries);
@@ -154,36 +143,58 @@ Vis.prototype = {
 
     hit.add(H.Action.Hit);
     hit.group([entries, totals]);
-  },
-  getConfig : function () {
-    var
-      data    = this.data,
-      config  = Vis.config,
-      summary = Flotr.clone(config.summary),
-      entries = Flotr.clone(config.entries),
-      totals  = Flotr.clone(config.totals);
-
-    summary.data  = data.totals;
-    entries.data  = data.entries;
-    totals.data   = data.totals;
-
-    return this.bindFormattersToData({
-      summary : summary,
-      entries : entries,
-      totals : totals
-    });
-  },
-  bindFormattersToData : function (config) {
-    config.totals.flotr.mouse.trackFormatter = _.bind(
-      config.totals.flotr.mouse.trackFormatter,
-      this.data
-    );
-    config.summary.flotr.xaxis.tickFormatter = _.bind(
-      config.summary.flotr.xaxis.tickFormatter,
-      this.data
-    );
-    return config;
   }
 };
+
+function setConfig () {
+  var
+    data    = this.data,
+    config  = Vis.config,
+    summary = Flotr.clone(config.summary),
+    entries = Flotr.clone(config.entries),
+    totals  = Flotr.clone(config.totals);
+
+  summary.data  = data.totals;
+  entries.data  = data.entries;
+  totals.data   = data.totals;
+
+  this.config = {
+    summary : summary,
+    entries : entries,
+    totals : totals
+  };
+
+  bindFormattersToData(this.config, data);
+  configureStart(this.config, data);
+}
+
+function bindFormattersToData (config) {
+  config.totals.flotr.mouse.trackFormatter = _.bind(
+    config.totals.flotr.mouse.trackFormatter,
+    this.data
+  );
+  config.summary.flotr.xaxis.tickFormatter = _.bind(
+    config.summary.flotr.xaxis.tickFormatter,
+    this.data
+  );
+}
+
+function configureStart (config, data) {
+  var
+    start = data.start || 0,
+    total = data.total || 10000, // ten thousand hours
+    xmax  = total - start,
+    ymax  = total - start,
+    flotr = config.summary.flotr;
+
+  flotr.yaxis.ticks = [
+      [0, '<div class="start">'+start+'h</div>'],
+      [ymax - 4000, '<div class="end">6000h</div>'],
+      [ymax - 2000, '<div class="end">8000h</div>'],
+      [ymax, '<div class="end">10000h</div>']
+  ];
+  flotr.yaxis.max = ymax;
+  flotr.xaxis.max = xmax;
+}
 
 });
