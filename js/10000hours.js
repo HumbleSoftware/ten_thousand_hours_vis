@@ -1,44 +1,138 @@
 (function () {
 
-    var startTime = 4218;
+  // Configuraiton
+  var
+    H = Humble.Vis,
+    E = Flotr.EventAdapter,
 
-    HumbleFinance.trackFormatter = function (obj) {
-        
-        var x = Math.floor(obj.x),
-            text = descriptions[x];
+    container = document.getElementById('vis'),
 
-        if (!text) {
-            var t = 0;
-            for (var i = 0; i < practices.length; i++) {
-                t += parseFloat(practices[i].data[x][1]);
-            }
-            t = Math.round(t * 100) / 100;
-            text = t + ' hours';
+    start = 4218,
+    ymax = 10000 - start,
+    xmax = 10000 - start,
+
+    cumulativeOptions = {
+      name    : 'cumulative',
+      height  : 240,
+      width   : 600,
+      data    : totals,
+      flotr   : {
+        lines : {
+          fill : true,
+          fillOpacity : .2
+        },
+        yaxis : { 
+          noTicks : 3,
+          showLabels : true,
+          min : 0,
+          max : ymax,
+          ticks : [
+              [0, '<div class="start">'+start+'h</div>'],
+              [ymax - 4000, '<div class="end">6000h</div>'],
+              [ymax - 2000, '<div class="end">8000h</div>'],
+              [ymax, '<div class="end">10000h</div>']
+          ]
+
+          /*,
+          tickFormatter : function (n) {
+            return (n == this.max ? false : '$'+n);
+          }
+          */
+        },
+        xaxis : {
+          max : xmax,
+          min: 0,
+          showLabels : true,
+          tickFormatter : function (n) { 
+            if (n == 0) return '';
+            var tickDate = (new Date(Date.parse(dates[1]) + n * 1000 * 60 * 60 * 24)); // Double check this index please
+            return tickDate.getMonth()+'/'+tickDate.getDate()+'/'+tickDate.getFullYear();
+          }
         }
-        
-        text = dates[x] + ': ' + text;
+      }
+    },
 
-        return (text);
-    };
-    
-    HumbleFinance.yTickFormatter = function (n) {
-        n = parseFloat(n) + startTime;
-        return n+'h';
-    };
-    
-    HumbleFinance.xTickFormatter = function (n) { 
-        if (n == 0) return '';
-        var tickDate = (new Date(Date.parse(dates[1]) + n * 1000 * 60 * 60 * 24));
-        return tickDate.getMonth()+'/'+tickDate.getDate()+'/'+tickDate.getFullYear();
-    };
-    
-    HumbleFinance.init('humblefinance', totals, practices, totals, {startTime : startTime});
+    practiceOptions = {
+      name    : 'practice',
+      height  : 80,
+      width   : 600,
+      data    : practices,
+      flotr   : {
+        bars : { show : true, stacked : true },
+        mouse: {
+          track: true,
+          trackY: false,
+          position: 'ne',
+          trackDecimals: 0
+        },
+        legend : {
+          position : 'ne',
+          show : true
+        }
+      }
+    },
 
-    var message, flagData;
+    summaryOptions = {
+      name    : 'summary',
+      height  : 80,
+      width   : 600,
+      data    : totals,
+      flotr   : {
+        lines : {
+          fill : true,
+          fillOpacity : .2
+        },
+        mouse : {
+          track: true,
+          trackY: false,
+          sensibility: 1,
+          trackDecimals: 4,
+          trackFormatter: function (o) {
+            /*
+            var data = jsonData[o.nearest.x];
+            return data.date + " Price: " + data.close + " Vol: " + data.volume;
+            */
+          },
+          position: 'ne'
+        },
+        xaxis : {
+          noTicks: 5,
+          showLabels : true
+          /*,
+          tickFormatter : function (n) {
+            return jsonData[n].date.split(' ')[2];
+            return (parseInt(n) === 0 ? false : jsonData[n].date.split(' ')[2]);
+          }
+          */
+        },
+        handles   : { show : true },
+        selection : { mode : 'x'},
+        grid : {
+          verticalLines : false
+        }
+      }
+    },
 
-    message = '<div>'+(startTime + Math.round(totals[totals.length-1][1]))+' Total Hours, ';
-    message += dates[totals.length-1]+'</div>';
-    flagData = [[totals.length-1, message]];
+    vis, price, volume, summary, selection, hit;
 
-    HumbleFinance.setFlags(flagData);
+  // Application
+
+  vis = new H.Visualization();
+  cumulative = new H.Child(cumulativeOptions);
+  practice = new H.Child(practiceOptions);
+  summary = new H.Child(summaryOptions);
+  selection = new H.Interaction({leader : summary});
+  hit = new H.Interaction();
+
+  vis.add(cumulative);
+  vis.add(practice);
+  vis.add(summary);
+  vis.render(container);
+
+  selection.add(H.Action.Selection);
+  selection.follow(practice);
+
+  hit.add(H.Action.Hit);
+  hit.group([practice, summary]);
 })();
+

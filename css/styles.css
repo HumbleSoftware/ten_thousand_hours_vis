@@ -10,7 +10,7 @@
   -webkit-text-shadow: 2px 2px 0 #CCC;
   -moz-text-shadow: 2px 2px 0 #CCC;
 }
-#humblefinance {;
+#humblefinance, #vis {;
   position: relative;
   margin: 40px auto;
   width: 600px;
