@@ -100,12 +100,14 @@ ten.Vis.config = {
         sensibility: 1,
         trackDecimals: 4,
         trackFormatter: function (o) {
-          var x = Math.floor(o.x),
-              text = this.descriptions[x];
+          var
+            x = Math.floor(o.x),
+            text = this.descriptions[x],
+            t = 0,
+            i;
 
           if (!text) {
-              var t = 0;
-              for (var i = 0; i < this.entries.length; i++) {
+              for (i = 0; i < this.entries.length; i++) {
                   t += parseFloat(this.entries[i].data[x][1]);
               }
               t = Math.round(t * 100) / 100;
