@@ -38,7 +38,7 @@ ten.Vis.config = {
         noTicks : 3,
         showLabels : true,
         min : 0,
-        max : 10000
+        max : 60 * 10000
       },
       xaxis : {
         max : 10000,
@@ -182,19 +182,20 @@ function bindFormattersToData (config) {
 function configureStart (config, data) {
   var
     start = data.start || 0,
-    total = data.total || 10000, // ten thousand hours
+    total = data.total || 60 * 10000, // ten thousand hours
     xmax  = total - start,
     ymax  = total - start,
     flotr = config.summary.flotr;
 
   flotr.yaxis.ticks = [
       [0, '<div class="start">'+start+'h</div>'],
-      [ymax - 4000, '<div class="end">6000h</div>'],
-      [ymax - 2000, '<div class="end">8000h</div>'],
+      [ymax - 4000 * 60, '<div class="end">6000h</div>'],
+      [ymax - 2000 * 60, '<div class="end">8000h</div>'],
       [ymax, '<div class="end">10000h</div>']
   ];
   flotr.yaxis.max = ymax;
-  flotr.xaxis.max = xmax;
+  flotr.xaxis.max = xmax / 60;
+  console.log(flotr.yaxis.max, flotr.xaxis.max)
 }
 
 });
