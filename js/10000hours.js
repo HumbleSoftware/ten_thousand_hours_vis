@@ -57,6 +57,7 @@
       height  : 80,
       width   : 600,
       data    : practices,
+      skipPreprocess : true,
       flotr   : {
         bars : { show : true, stacked : true },
         mouse: {
@@ -67,8 +68,10 @@
         },
         legend : {
           position : 'ne',
-          show : true
-        }
+          show : true,
+          container : document.getElementById('legend')
+        },
+        HtmlText : true
       }
     },
 
