@@ -32,12 +32,6 @@
               [ymax - 2000, '<div class="end">8000h</div>'],
               [ymax, '<div class="end">10000h</div>']
           ]
-
-          /*,
-          tickFormatter : function (n) {
-            return (n == this.max ? false : '$'+n);
-          }
-          */
         },
         xaxis : {
           max : xmax,
@@ -100,12 +94,6 @@
         xaxis : {
           noTicks: 5,
           showLabels : true
-          /*,
-          tickFormatter : function (n) {
-            return jsonData[n].date.split(' ')[2];
-            return (parseInt(n) === 0 ? false : jsonData[n].date.split(' ')[2]);
-          }
-          */
         },
         handles   : { show : true },
         selection : { mode : 'x'},
