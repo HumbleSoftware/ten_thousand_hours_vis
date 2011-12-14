@@ -9,6 +9,7 @@
   <script type="text/javascript" src="lib/vis.js"></script>
   <script type="text/javascript" src="lib/bonzo.min.js"></script>
   <script type="text/javascript" src="dev/test_data.js"></script>
+    <script type="text/javascript" src="js/10000hours.js"></script>
 </head>
 <body>
 <div id="content" >
@@ -16,5 +17,20 @@
   <div id="vis"></div>
 </div>
 </body>
-<script type="text/javascript" src="js/10000hours.js"></script>
+<script type="text/javascript">
+(function () {
+  var
+    container = document.getElementById('vis'),
+    data = {},
+    vis;
+
+  data.totals = totals;
+  data.dates = dates;
+  data.entries = practices;
+  data.descriptions = descriptions;
+
+  vis = new TenThousandHours.Vis(container, data);
+
+})();
+</script>
 </html>
