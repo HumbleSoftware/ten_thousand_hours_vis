@@ -3,6 +3,7 @@
   text-align : center;
 }
 #title {
+  text-align: center;
   margin: 36px 0px;
   font-size: 40px;
   color: #333;
@@ -10,7 +11,7 @@
   -webkit-text-shadow: 2px 2px 0 #CCC;
   -moz-text-shadow: 2px 2px 0 #CCC;
 }
-#humblefinance, #vis {;
+#vis {;
   position: relative;
   margin: 40px auto;
   width: 600px;
@@ -81,85 +82,4 @@
     right: 8px !important;
     max-width: 280px;
     text-align: left;
-}
-#summaryGraph {
-    border-bottom: 1px solid #CCE6FF;
-    position: relative;
-}
-#summaryGraph .flotr-grid-label:not(.flotr-grid-label-y) {
-    top: 18px !important;
-    opacity: .8;
-}
-#summaryGraph .flotr-grid-label {
-    margin: -16px 0px 0px -12px;
-    background: transparent;
-    text-align: left;
-}
-#summaryGraph .flotr-grid-label-y {
-    margin: 0px;
-    bottom: 0px;
-    text-align: left !important;
-    width: auto !important;
-}
-#summaryGraph .flotr-grid-label-y .start,
-#summaryGraph .flotr-grid-label-y .end {
-    margin-left: -4px;
-    padding-left: 4px;
-    background: #fff;
-    opacity: .8;
-    position: absolute;
-}
-.flag, .flagpole {
-    margin-left: 40px;
-}
-#summaryGraph .flotr-grid-label-y .start {
-    bottom: -1px;
-    border-bottom: 1px solid #CCE6FF;
-    padding-right: 5px;
-}
-#summaryGraph .flotr-grid-label-y .end {
-    top : 14px;
-    left: 0px;
-}
-
-#summaryGraph .flotr-grid-label-value {
-    width: 80px;
-    height: 16px;
-    position: absolute;
-    top: 0px;
-    z-index: 2;
-}
-#summaryGraph .flotr-grid-label-background {
-    width: 80px;
-    background: #fff;
-    height: 16px;
-    opacity: .75;
-    position: absolute;
-    top: 0px;
-    z-index: 1;
-}
-#priceGraph {
-    margin-top: 30px;
-}
-#summaryGraph,
-#priceGraph {
-    margin-left: 40px;
-    width: 560px !important;
-}
-#summaryGraph .flotr-grid-label-y,
-#priceGraph .flotr-grid-label-y {
-    margin: -4px 0px 0px -36px;
-}
-#priceGraph .flotr-title {
-    margin-left: -20px;
-}
-#volumeGraph {
-    margin-top: 30px;
-    border-bottom: 1px solid #CCE6FF;
-}
-#volumeGraph .flotr-mouse-value {
-    display: none;
-}
-#body-container {
-    text-align: center;
 }
