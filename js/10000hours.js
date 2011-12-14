@@ -69,8 +69,7 @@
         },
         legend : {
           position : 'ne',
-          show : true,
-          container : document.getElementById('legend')
+          show : true
         }
       }
     },

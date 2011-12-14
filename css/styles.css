@@ -22,11 +22,11 @@
   -o-user-select: none;
   user-select: none;
 }
-#legend {
-  position : absolute;
-  top : 136px;
-  right : 2px;
-  z-index : 10000;
+#vis .practice .flotr-legend,
+#vis .practice .flotr-legend-bg {
+  position : absolute !important;
+  /* top : 136px !important; */
+  right : -150px !important;
   text-align : left;
 }
 
