@@ -93,13 +93,17 @@ ten.Vis.config = {
             x = Math.floor(o.x),
             text = this.descriptions[x],
             t = 0,
+            value,
             i;
 
           if (!text) {
               for (i = 0; i < this.entries.length; i++) {
-                  t += parseFloat(this.entries[i].data[x][1]);
+                value = _.find(this.entries[i].data, function (d) {
+                  return d[0] == x;
+                });
+                if (value) t += value[1];
               }
-              t = Math.round(t * 100) / 100;
+              t = Math.round(t * 100 / 60) / 100;
               text = t + ' hours';
           }
           
