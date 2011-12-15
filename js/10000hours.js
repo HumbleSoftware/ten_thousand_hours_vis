@@ -30,6 +30,7 @@ ten.Vis.config = {
     height  : 240,
     width   : 600,
     flotr   : {
+      title : 'Progress Summary:',
       lines : {
         fill : true,
         fillOpacity : .2
