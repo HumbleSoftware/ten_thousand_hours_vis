@@ -116,7 +116,11 @@ ten.Vis.config = {
       },
       xaxis : {
         noTicks: 5,
-        showLabels : true
+        showLabels : true,
+        tickFormatter : function (n) { 
+          var tickDate = (new Date(Date.parse(this.dates[n])));
+          return tickDate.getMonth()+'/'+tickDate.getDate()+'/'+tickDate.getFullYear();
+        }
       },
       handles   : { show : true },
       selection : { mode : 'x'},
@@ -176,6 +180,10 @@ function setConfig () {
 function bindFormattersToData (config, data) {
   config.totals.flotr.mouse.trackFormatter = _.bind(
     config.totals.flotr.mouse.trackFormatter,
+    data
+  );
+  config.totals.flotr.xaxis.tickFormatter = _.bind(
+    config.totals.flotr.xaxis.tickFormatter,
     data
   );
   config.summary.flotr.xaxis.tickFormatter = _.bind(
