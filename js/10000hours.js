@@ -46,8 +46,7 @@ ten.Vis.config = {
         min: 0,
         showLabels : true,
         tickFormatter : function (n) { 
-          if (n == 0) return '';
-          var tickDate = (new Date(Date.parse(this.dates[1]) + n * 1000 * 60 * 60 * 24)); // Double check this index please
+          var tickDate = (new Date(Date.parse(this.dates[0]) + n * 1000 * 60 * 60 * 24)); // Double check this index please
           return tickDate.getMonth()+'/'+tickDate.getDate()+'/'+tickDate.getFullYear();
         }
       }
