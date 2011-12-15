@@ -168,14 +168,14 @@ function setConfig () {
   configureStart(this.config, data);
 }
 
-function bindFormattersToData (config) {
+function bindFormattersToData (config, data) {
   config.totals.flotr.mouse.trackFormatter = _.bind(
     config.totals.flotr.mouse.trackFormatter,
-    this.data
+    data
   );
   config.summary.flotr.xaxis.tickFormatter = _.bind(
     config.summary.flotr.xaxis.tickFormatter,
-    this.data
+    data
   );
 }
 
