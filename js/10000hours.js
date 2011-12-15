@@ -55,7 +55,7 @@ ten.Vis.config = {
 
   entries : {
     name    : 'practice',
-    height  : 80,
+    height  : 110,
     width   : 600,
     skipPreprocess : true,
     flotr   : {
@@ -76,7 +76,7 @@ ten.Vis.config = {
 
   totals : {
     name    : 'totals',
-    height  : 80,
+    height  : 70,
     width   : 600,
     flotr   : {
       lines : {
