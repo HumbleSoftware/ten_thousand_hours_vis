@@ -26,7 +26,7 @@ ten.Vis = Vis;
 ten.Vis.config = {
 
   summary : {
-    name    : 'cumulative',
+    name    : 'summary',
     height  : 240,
     width   : 600,
     flotr   : {
@@ -75,7 +75,7 @@ ten.Vis.config = {
   },
 
   totals : {
-    name    : 'summary',
+    name    : 'totals',
     height  : 80,
     width   : 600,
     flotr   : {
