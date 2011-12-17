@@ -123,6 +123,7 @@ ten.Vis.config = {
       },
       handles   : { show : true },
       selection : { mode : 'x'},
+      handles   : { show : true },
       grid : {
         verticalLines : false
       }
